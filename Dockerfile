@@ -10,6 +10,7 @@ RUN apt-get update && apt-get install -y \
     curl \
     gnupg \
     gnupg-curl \
+    apt-transport-https \
     ca-certificates \
     && rm -rf /var/lib/apt/lists/*
 
@@ -18,7 +19,7 @@ RUN wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86
     dpkg -i cuda-repo-ubuntu1604_9.0.176-1_amd64.deb && \
     apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/7fa2af80.pub && \
     apt-get update && \
-    apt-get install -y cuda-toolkit-9-0 && \
+    apt-get install -y --allow-unauthenticated cuda-toolkit-9-0 && \
     rm -f cuda-repo-ubuntu1604_9.0.176-1_amd64.deb
 
 # Variables de entorno de CUDA
