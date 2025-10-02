@@ -9,12 +9,12 @@ RUN apt-get update && apt-get install -y \
     wget \
     curl \
     gnupg \
+    gnupg-curl \
     ca-certificates \
     && rm -rf /var/lib/apt/lists/*
 
 # Agregar repo de CUDA 9.0
-RUN apt-get update && apt install -y gnupg-curl && \
-    wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/cuda-repo-ubuntu1604_9.0.176-1_amd64.deb && \
+RUN wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/cuda-repo-ubuntu1604_9.0.176-1_amd64.deb && \
     dpkg -i cuda-repo-ubuntu1604_9.0.176-1_amd64.deb && \
     apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/7fa2af80.pub && \
     apt-get update && \
